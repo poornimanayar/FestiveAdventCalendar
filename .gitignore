@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/.idea
+/bin
+*.csproj.user
+/FestiveAdvent/.idea
+/FestiveAdvent/.vs
+/FestiveAdvent/FestiveAdvent/bin/Debug/net7.0
+/FestiveAdvent/FestiveAdvent/obj/Debug/net7.0
+/FestiveAdvent/FestiveAdvent/obj

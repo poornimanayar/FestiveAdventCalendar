@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+
+option csharp_namespace = "FestiveAdventApi";
+
+package festiveadvent;
+
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+
+service FestiveAdventService{
+
+  rpc ListMessages(google.protobuf.Empty) returns (ListReply){
+    option (google.api.http) ={
+      get : "/message"
+    };
+  }
+
+  rpc GetMessage(GetAdventMessageRequest) returns (AdventMessageReply){
+    option (google.api.http) ={
+      get : "/message/{id}"
+    };
+  }
+
+  rpc CreateMessage(CreateAdventMessageRequest) returns (AdventMessageReply){
+    option (google.api.http) ={
+      post : "/message"
+      body:"*"
+    };
+  }
+
+  rpc UpdateMessage(UpdateAdventMessageRequest) returns (AdventMessageReply){
+    option (google.api.http) ={
+      put : "/message/{id}"
+      body:"*" 
+    };
+  }
+
+  rpc DeleteMessage(DeleteAdventMessageRequest) returns (google.protobuf.Empty){
+    option (google.api.http) ={
+      delete : "/message/{id}"
+    };
+  }
+}
+
+message CreateAdventMessageRequest{
+  int32 id = 1;
+  string message=2;
+}
+
+message GetAdventMessageRequest{
+  int32 id =1;
+}
+
+message UpdateAdventMessageRequest{
+  int32 id=1; //id is bound from route parameter
+  string message=2;
+}
+
+message DeleteAdventMessageRequest{
+  int32 id =1;
+}
+
+message ListReply{
+  repeated AdventMessageReply AdventMessages = 1;
+}
+
+message AdventMessageReply{
+  int32 id = 1;
+  string message=2;
+}
